@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "nhtsa"
+		},
+		{
+			"path": "car_specs"
+		}
+	]
+}
