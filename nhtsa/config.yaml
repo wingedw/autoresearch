@@ -1,0 +1,13 @@
+---
+nhtsa:
+    YEARS:
+        uri: https://webapi.nhtsa.gov/api/SafetyRatings?format=json
+    MAKES:
+        uri: https://webapi.nhtsa.gov/api/SafetyRatings/modelyear/{0}?format=json
+    MODELS:
+        uri: https://webapi.nhtsa.gov/api/SafetyRatings/modelyear/{0}/make/{1}?format=json
+    REPORT:
+        uri: https://one.nhtsa.gov/webapi/api/Recalls/vehicle/modelyear/{0}/make/{1}/model/{2}?format=json
+cq:
+    YEARS:
+        uri: https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getYears

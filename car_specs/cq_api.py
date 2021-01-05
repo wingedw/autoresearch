@@ -3,6 +3,7 @@ import werkzeug
 werkzeug.cached_property = werkzeug.utils.cached_property
 from flask_restplus import Api, Resource, fields
 import requests
+import json
 from os import environ, path
 from dotenv import load_dotenv
 
@@ -16,10 +17,29 @@ api = Api(app, version='0.1', title='CQ API',
 
 ns = api.namespace('cq', description='CQ APIs')
 
-class CQClass(object):
+class CQ_Class(object):
     
     def __init__(self):
         self.counter = 0
 
+    def GetYears(self):
+        uri= environ.get('CQ_YEARS')
+        r = requests.get(uri)
+        result = r.json #.replace('?','',1)
+        #result = json.dumps(result)
+        #result = result.replace('?','',1)
+        d = json.loads('{ "Years": {"min_year":"1941", "max_year":"2019"} }')
+        data = "bob"
+        return data
+
+GetJason = CQ_Class()
+
+@ns.route('/year')
+class YearJson(Resource):
+
+    @ns.doc('Model Years Range')
+    def get(self):
+       return GetJason.GetYears()
+
 if __name__ == '__main__':
-   app.run(debug = True, port=80)
+   app.run(debug = True, port=5050)
